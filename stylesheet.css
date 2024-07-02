@@ -391,112 +391,78 @@ section{
         opacity: 1;
     }
 }
-.radial-bars .bar{
-    margin-top: 40px 0;
+.radial-bars {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
 }
-.radial-bars .bar:first-child{
-    margin-top: 0;
-    
-}
-.radial-bars .bar:last-child{
-    margin-bottom: 0;
-}
-.radial-bars .bar .info{
-    margin-bottom: 5px;
 
+.radial-bars .bar {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 20px;
 }
-.radial-bars .bar .info span{
+
+.radial-bars .bar .info {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.radial-bars .bar .info span {
     font-size: 17px;
     font-weight: 500;
     animation: showText 0.5s 1s linear forwards;
     opacity: 0;
-
 }
-.radial-bars .bar .progress-line{
+
+.radial-bars .circle {
     position: relative;
-    border-radius: 10px;
     width: 100%;
-    height: 5px;
-    background-color: #000000;
-    animation: animate 1s cubic-bezier(1,0,0.5,1) forwards;
-    transform: scaleX(0);
-    transform-origin: left;
-    
-}
-@keyframes animate{
-    100%{
-        transform: scaleX(1);
-    }
-}
-.radial-bars .bar .progress-line span{
     height: 100%;
-    background-color: #00ff7b;
-    position: absolute;
-    border-radius: 10px;
-    animation: animate 1s 1s cubic-bezier(1,0,0.5,1) forwards;
-    transform: scaleX(0);
-    transform-origin: left;
-}
-.progress-line.creativity span{
-    width: 80%;
+    border-radius: 50%;
+    background: conic-gradient(#00fff2 calc(var(--percentage) * 1%), #ededed calc(var(--percentage) * 1%));
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.progress-line.communication span{
-    width: 75%;
-}
-.progress-line.quicklearner span{
+.radial-bars .inside-circle {
+    position: absolute;
     width: 70%;
-}
-.progress-line.teammanagement span{
-    width: 85%;
-}
-.progress-line span::after{
-    position: absolute;
-    padding: 1px 8px;
-    background-color: #000;
-    color: #fff;
-    font-size: 12px;
-    border-radius: 3px;
-    top: -28px;
-    right: -20px;
-    animation: showText 0.5s 1.5s linear forwards;
-    opacity: 0;
-}
-.progress-line.creativity span::after{
-    content: "80%";
-
-}.progress-line.communication span::after{
-    content: "75%";
-
-}
-.progress-line.quicklearner span::after{
-    content: "70%";
-
-}
-.progress-line.teammanagement span::after{
-    content: "85%";
-
+    height: 70%;
+    background: #081b29;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 500;
 }
 
-.progress-line span::before{
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 0;
-    border: 7px solid transparent;
-    border-bottom-width: 0px;
-    border-right-width: 0px;
-    border-top-color: #000;
-    top: -10px;
-    right: 0;
-    animation: showText 0.5s 1.5s linear forwards;
-    opacity: 0;
+.bar.creativity .circle {
+    --percentage: 80;
 }
-@keyframes showText{
-    100%{
+
+.bar.communication .circle {
+    --percentage: 75;
+}
+
+.bar.quicklearner .circle {
+    --percentage: 70;
+}
+
+.bar.teammanagement .circle {
+    --percentage: 85;
+}
+
+@keyframes showText {
+    100% {
         opacity: 1;
     }
 }
+
 .main-text {
     padding-top: 130px;
     margin-top: 60px;
@@ -512,7 +478,7 @@ section{
 }
 .portfolio-content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(359px, 1fr));
+    grid-template-columns: repeat(3, 1fr); /* Set three columns */
     gap: 20px; /* Add gap between grid items */
     padding: 20px; /* Add padding around the grid container */
 }
@@ -575,6 +541,7 @@ section{
 .row:hover .layer{
     height: 100%;
 }
+
 .contact{
     display: grid;
     grid-template-columns: repeat(2,1fr);
